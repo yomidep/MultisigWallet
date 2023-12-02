@@ -2,10 +2,10 @@
 
 pragma solidity 0.8.19;
 
-import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract multiSig {
+contract multiSig is ReentrancyGuard {
     event Deposit(address indexed sender, uint amount, uint balance);
     event SubmitTransaction(
         address indexed owner,
@@ -175,7 +175,7 @@ contract multiSig {
             transaction.confirmationNo
         );
     }
-         function withdraw(address payable receiver, uint amount) public onlyOwner {
+         function withdraw(address payable receiver, uint amount) public onlyOwner nonReentrant {
             require(receiver != address(0), "Invalid receiver address");
         require(amount > 0, "Invalid amount");
 
