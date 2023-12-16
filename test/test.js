@@ -30,4 +30,8 @@ describe('multisig Contract', function() {
         expect(await multisig.getOwners()).to.deep.equal([account1, account2]);
         expect(await multisig.confirmationsRequired()).to.be.equal(2);
     });
+
+    it("should emit Submit Transaction Event", async () => {
+       expect(await multisig.submitTransaction().to.emit.SubmitTransaction(account1, 0, deployeradd, 5, 0xe73620c3000000000000000000000000000000000000000000000000000000000000007b));
+    });
 });
