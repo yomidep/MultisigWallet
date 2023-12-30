@@ -1,5 +1,7 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const {
+    ethers,
+    expect,
+  } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
 
 describe('multisig Contract', function() {
     let multisig;
@@ -32,6 +34,8 @@ describe('multisig Contract', function() {
     });
 
     it("should emit Submit Transaction Event", async () => {
-       expect(await multisig.submitTransaction().to.emit.SubmitTransaction(account1, 0, deployeradd, 5, 0xe73620c3000000000000000000000000000000000000000000000000000000000000007b));
+        expect(await multisig.submitTransaction(account1, 0, deployeradd, 5, 0xe73620c3000000000000000000000000000000000000000000000000000000000000007b)
+            .to.emit(multisig, "SubmitTransaction")); // <-- Use 'multisig' instead of 'Multisig'
     });
+    
 });

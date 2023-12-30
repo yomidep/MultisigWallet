@@ -5,7 +5,6 @@
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.1",
-    "ethers": "^6.9.0",
     "hardhat": "^2.19.1"
   },
   "dependencies": {
